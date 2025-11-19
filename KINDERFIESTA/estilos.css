@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&family=Poppins:wght@100;200;300;400&display=swap');
+
 :root{
     --verde: #0c443a;
     --limon: #25d1b2;
     --degradado: linear-gradient(90deg, var(--limon), var(--verde));
 }
+
 *{
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -14,15 +16,18 @@
     border: none;
     text-transform: capitalize;
 }
+
 *::selection{
     background: var(--limon);
     color: rgb(248, 248, 248);
 }
+
 html{
     font-size: 62.5%;
 }
+
 body{
-    background: url('img/fondow.png') no-repeat ;
+    background: url('img/fondow.png') no-repeat;
     background-size: cover;
     background-attachment: fixed;
     overflow-x: hidden;
@@ -65,13 +70,14 @@ section{
 .btn-mas-info:hover {
     background-color: #1b6d55;
 }
+
 header{
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     background-color: white;
-    box-shadow: 0  .5rem  1rem rgba(0, 0, 0, .1) ;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
     padding: 2rem 9%;
     display: flex;
     align-items: center;
@@ -104,49 +110,54 @@ header label{
     visibility: hidden;
     opacity: 0;
 }
-.inicio{
+
+/* ------------------------------------
+   SECCIÓN INICIO (OPTIMIZADA)
+------------------------------------ */
+
+.inicio {
     display: flex;
     align-items: center;
     justify-content: center;
     background-position: center;
     min-height: 60vh;
 }
-.inicio .image img{
+
+.inicio .image img {
     width: 40vw;
     animation: float 3s linear infinite;
 }
-@keyframes float{
-    0%, 100%{
-        transform: translateY(0rem);
-    }
-    50%{
-        transform: translateY(-3.5rem);
-    }
+
+/* Animación optimizada */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3.5rem); }
 }
-.inicio .content h3{
+
+.inicio .content h3 {
     font-size: 5.5rem;
     color: #333;
     text-transform: uppercase;
 }
-.inicio .content h3 span{
+
+.inicio .content h3 span {
     color: var(--limon);
-    text-transform: uppercase;
-} 
-.inicio .content p{
+}
+
+.inicio .content p {
     font-size: 1.7rem;
     color: #666;
     padding: 1rem 0;
 }
-@media(max-width:1200px){
-    html{
-        font-size: 55%;
-    }
-}
+
+/* RESPONSIVE — Tablets */
 @media(max-width:768px){
+
     header label{
         visibility: visible;
         opacity: 1;
     }
+
     header .navbar{
         position: absolute;
         top: 100%;
@@ -161,6 +172,7 @@ header label{
         opacity: 0;
         transition: .2s linear;
     }
+
     header .navbar a{
         display: block;
         margin: 2rem 0;
@@ -173,55 +185,46 @@ header label{
     }
     header input:checked ~ label::before{
         content:'\f00d';
-    }   
+    }
+
     .inicio {
-        display: flex;
-        flex-direction: column-reverse; /* si quieres que la imagen vaya abajo en móvil */
-        align-items: center;
-        justify-content: center;
-        gap: 1rem; /* espacio entre contenido e imagen */
-        
-        background: url('img/fondow.png') no-repeat ;
+        flex-direction: column-reverse;
+        gap: 1rem;
         background-size: cover;
-        min-height: 100vh; /* que ocupe toda la pantalla */
+        min-height: 100vh;
     }
 
     .inicio .image img {
-        width: 40vw;
-        max-width: 300px; /* limita tamaño en pantallas pequeñas */
-        height: auto;
-        animation: float 3s linear infinite; /* corregido "infinite" */
-    }
-
-/* Animación flotante */
-    @keyframes float {
-        0% { transform: translateY(0); }
-        50% { transform: translateY(-20px); }
-        100% { transform: translateY(0); }
+        width: min(40vw, 300px);
     }
 
     .inicio .content h3 {
-        font-size: clamp(2rem, 5vw, 3.6rem); /* texto responsivo */
-        color: #ffffff; /* si quieres que se vea sobre el fondo */
+        font-size: clamp(2.5rem, 5vw, 4rem);
         text-align: center;
+        color: #fff;
     }
 
     .inicio .content p {
-        font-size: clamp(1rem, 3vw, 1.5rem);
-        color: #fff;
+        font-size: clamp(1.2rem, 3vw, 1.6rem);
         text-align: center;
+        color: #fff;
     }
 }
+
+/* RESPONSIVE — Teléfonos pequeños */
 @media(max-width:450px){
     .inicio {
-        flex-direction: column; /* imagen debajo del contenido */
+        flex-direction: column;
     }
-    
     .inicio .image img {
-        width: 70vw; /* se adapta mejor a móvil */
+        width: 70vw;
     }
-    }
-/* --- Sección Salones --- */
+}
+
+/* ------------------------------------
+   SECCIÓN SALONES
+------------------------------------ */
+
 .salones {
     text-align: center;
     margin-top: 50px;
@@ -233,11 +236,12 @@ header label{
     margin-bottom: 30px;
     color: #333;
 }
+
 .salones-container {
     display: flex;
-    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan a la siguiente fila si no hay suficiente espacio */
-    justify-content: space-between; /* Añade espacio entre las tarjetas */
-    gap: 20px; /* Añade espacio entre las tarjetas */
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
 }
 
 .salon-card {
@@ -245,12 +249,11 @@ header label{
     border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     padding: 20px;
-    flex: 1 1 calc(33% - 20px); /* Ajusta el tamaño de las tarjetas para que ocupen el 33% del contenedor */
+    flex: 1 1 calc(33% - 20px);
     transition: transform 0.3s ease;
     position: relative;
-    margin-bottom: 20px; /* Espacio entre las filas */
+    margin-bottom: 20px;
 }
-
 
 .salon-card:hover {
     transform: translateY(-10px);
@@ -308,7 +311,6 @@ header label{
     border-radius: 2px;
 }
 
-/* Estrellas de calificación */
 .rating {
     margin: 10px 0;
     color: #ffc107;
@@ -331,7 +333,7 @@ header label{
     transform: scale(1.05);
 }
 
-/* Modal de reseñas */
+/* Modal reseñas */
 .modal {
     display: none;
     position: fixed;
@@ -435,7 +437,6 @@ header label{
     font-size: 1.8rem;
     font-weight: bold;
     color: var(--verde);
-    margin: 5px 0;
 }
 
 .promedio-estrellas {
@@ -443,7 +444,6 @@ header label{
     font-size: 2rem;
 }
 
-/* Mensajes de error y éxito */
 .mensaje {
     padding: 10px;
     margin: 10px 0;
@@ -463,105 +463,74 @@ header label{
     border: 1px solid #c8e6c9;
 }
 
-/* Modal de Ranking más grande */
+/* Modal de Ranking */
 #modalRanking .modal-content {
-    width: 95%;          /* ocupa casi todo el ancho */
-    max-width: 900px;    /* ancho máximo */
-    height: 80vh;        /* altura del 80% de la ventana */
-    padding: 30px;       /* espacio interno mayor */
-    font-size: 1.6rem;   /* tamaño de texto un poco mayor */
-    overflow-y: auto;    /* scroll si el contenido es largo */
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.6);
-}
-
-.modal-content {
-  background-color: white;
-  margin: 5% auto;
-  padding: 20px;
-  border-radius: 15px;
-  width: 90%;
-  max-width: 700px;
-}
-
-.close {
-  float: right;
-  font-size: 25px;
-  cursor: pointer;
+    width: 95%;
+    max-width: 900px;
+    height: 80vh;
+    padding: 30px;
+    font-size: 1.6rem;
+    overflow-y: auto;
 }
 
 .info-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
 }
 
 .info-buttons button {
-  padding: 8px 15px;
-  background: green;
-  border: none;
-  border-radius: 8px;
-  color: white;
-  cursor: pointer;
+    padding: 8px 15px;
+    background: green;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
 }
 
 .info-buttons button:hover {
-  background: rgb(3, 48, 3);
+    background: rgb(3, 48, 3);
 }
 
-.grid-snacks, .menu-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 15px;
+.grid-snacks,
+.menu-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
 }
 
-.snack-card, .menu-grid div {
-  background: green;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  width: 100px;
-  text-align: center;
-  padding: 8px;
+.snack-card,
+.menu-grid div {
+    background: green;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    width: 100px;
+    text-align: center;
+    padding: 8px;
 }
 
-.snack-card img, .menu-grid img {
-  width: 70px;
-  height: 70px;
-  border-radius: 10px;
-  object-fit: cover;
+.snack-card img,
+.menu-grid img {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+    object-fit: cover;
 }
 
 .modal-grande {
-    width: 80% !important;        /* Más ancho */
+    width: 80% !important;
     max-width: 900px;
     height: auto;
     padding: 30px;
-    font-size: 18px;             /* Texto más grande */
+    font-size: 18px;
 }
 
 .modal-content h2 {
-    font-size: 28px;             /* Título más grande */
+    font-size: 28px;
     margin-bottom: 10px;
-}
-
-.info-buttons button {
-    font-size: 18px;
-    padding: 10px 15px;
-    margin: 5px;
-    border-radius: 8px;
 }
 
 #contenidoInfoSalon p {
@@ -571,3 +540,5 @@ header label{
 #contenidoInfoSalon div {
     font-size: 16px;
 }
+
+
